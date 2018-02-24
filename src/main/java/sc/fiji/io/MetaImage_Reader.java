@@ -283,7 +283,7 @@ public class MetaImage_Reader implements PlugIn {
         String strHeaderSize = p.getProperty("HeaderSize", "0");
 	String strCompressedData = p.getProperty("CompressedData");
 
-        if (strObjectType == null || !strObjectType.equalsIgnoreCase("Image"))
+        if (strObjectType == null || !strObjectType.substring(0,5).equalsIgnoreCase("Image")) // .substring(0,5) is added to allow comment and majic numbers in the end of the first line of .mhd files
             throw new IOException("The specified file does not contain an image.");
         int ndims = Integer.parseInt(strNDims);
         if (strDimSize == null)
